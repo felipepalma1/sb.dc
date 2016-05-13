@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.1/foundation.css">
+
+    <script>
+
+
+
+      var mydb = new Firebase("https://usuarios-dc-sb.firebaseio.com/");
+      var referencia = mydb.child("usuarios");
+
+      function x(){
+
+        var $0000 = document.getElementById('nombre_y_apellido');
+        var $0001 = document.getElementById('cargo');
+        var $0010 = document.getElementById('nombre_de_usuario');
+        var $0011 = document.getElementById('anexo');
+
+        var $0000_alpha = $0000.value;
+        var $0001_alpha = $0001.value;
+        var $0010_alpha = $0010.value;
+        var $0011_alpha = $0011.value;
+
+        console.log("Hello" + " " + $0000_alpha);
+        referencia.push({
+            nombre_y_apellido: $0000_alpha,
+            cargo: $0001_alpha,
+            nombre_de_usuario: $0010_alpha,
+            anexo: $0011_alpha
+
+        });
+
+        $0000.value = "";
+        $0001.value = "";
+        $0010.value = "";
+        $0011.value = "";
+
+        $0000.focus();
+      }
+    </script>
+
+
+    <script>
+
+    </script>
+  </head>
+
+  <body>
+    <div id="formulario">
+      <label for="nombre_y_apellido">Nombre y apellido</label>
+      <input required type="text" id="nombre_y_apellido" type="text" placeholder="Nombre y apellido. Formato: 'juan perez'"/>
+
+      <label for="cargo">Cargo</label>
+      <input required type="text" id="cargo" type="text" placeholder="Cargo. Formato: 'subdirector administrativo'"/>
+
+      <label for="nombre_de_usuario">Nombre de usuario</label>
+      <input required type="text" id="nombre_de_usuario" type="text" placeholder="Nombre de usuario. Formato: 'jperez'"/>
+
+      <label for="anexo">Anexo</label>
+      <input required type="text" id="anexo" type="text" placeholder="Anexo. Formato: '4455'"/>
+
+      <center><button onclick="x()">Quemar en BD</button></center>
+
+
+    </div>
+  </body>
+</html>
